@@ -1,0 +1,52 @@
+.table-img {
+    width: 250px;
+    border: 2px solid grey;
+    max-height: 300px;
+}
+
+.service-text {
+    color: blue;
+}
+
+.name-course {
+    max-width: 200px;
+}
+
+.tr-lines {
+    height: 200px;
+}
+
+#add-course-descp {
+    resize: none;
+}
+
+.btn-modal {
+    width: 100%;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-modal {
+    max-width: 400px;
+    max-height: 505px;
+}
+
+.btn-edit, .btn-delete {
+    width: 78.422px;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

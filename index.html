@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>CRUD</title>
+</head>
+
+<body>
+  <header id="hearder">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container" id="body">
+    <header class="header-body mb-5 mt-5 container">
+      <h3 class="service-text">SERVICES</h3>
+      <button class="btn btn-primary btn-add mt-4 mb-1" id="btn-add">NEW COURSE</button>
+    </header>
+    <div class="container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="container-body">
+          <!-- <tr class="tr-lines" id="first-element">
+                      <th scope="row">1</th>
+                      <td class="name-course">First Course</td>
+                      <td><img class="img-course img-fluid table-img" src="https://files.passeidireto.com/1cc481c0-d28a-4f01-814f-1d9c0d3d2a26/1cc481c0-d28a-4f01-814f-1d9c0d3d2a26.jpeg" alt=""></td>
+                      <td class="descrip-course">Description of the first course</td>
+                      <td class="btn-action"><button class="btn btn-secondary btn-edit" id="btn-edit" onclick="editModal()">EDIT</button> <button class="btn btn-danger btn-delete" onclick="deleteCard(event)">DELETE</button></td>                    </tr>
+                    <tr class="tr-lines">
+                      <th scope="row">2</th>
+                      <td class="name-course">Second Course</td>
+                      <td><img class="img-course img-fluid table-img" src="https://metsul.com/wp-content/uploads/2021/04/5557F79C-9330-4239-82D7-94BD539CAB3C.jpeg" alt=""></td>
+                      <td class="descrip-course">Description of the second course</td>
+                      <td class="btn-action"><button class="btn btn-secondary btn-edit" id="btn-edit" onclick="editModal()">EDIT</button> <button class="btn btn-danger btn-delete" onclick="deleteCard(event)">DELETE</button></td>                    </tr>
+                    <tr class="tr-lines">
+                      <th scope="row">3</th>
+                      <td class="name-course">Third Course</td>
+                      <td><img  class="img-course img-fluid table-img" src="https://image.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg" alt=""></td>
+                      <td class="descrip-course">Description of the third course</td>
+                      <td class="btn-action"><button class="btn btn-secondary btn-edit" id="btn-edit" onclick="editModal()">EDIT</button> <button class="btn btn-danger btn-delete" onclick="deleteCard(event)">DELETE</button></td>
+                    </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <footer class="mt-5">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img class="d-inline-block align-text-top">
+          Bootstrap
+        </a>
+      </div>
+    </nav>
+  </footer>
+
+  <div class="modal-container invisible" id="modal-container">
+    <form class="form-control form-modal card card-body" id="form-modal">
+      <div class="mb-3">
+        <label for="add-course-id" class="form-label">ID</label>
+        <input type="number" class="form-control" id="add-course-id">
+      </div>
+      <div class="mb-3">
+        <label for="add-course-name" class="form-label">Course Name</label>
+        <input type="text" class="form-control" id="add-course-name">
+      </div>
+      <div class="mb-3">
+        <label for="add-course-img" class="form-label">Course Image</label>
+        <input type="url" class="form-control" id="add-course-img">
+      </div>
+      <div class="mb-3">
+        <label for="add-course-descp" class="form-label">Course Description</label>
+        <textarea class="form-control" id="add-course-descp" rows="3"></textarea>
+      </div>
+      <div id="btns-modal">
+        <button class="btn btn-primary mb-2 btn-save d-block btn-modal" id="btn-save">SAVE</button>
+        <button class="btn btn-warning btn-cancel d-block btn-modal" id="btn-cancel">CANCEL</button>
+        <button class="btn btn-primary mb-2 btn-save-changes d-block btn-modal invisible" id="btn-save-changes">SAVE CHANGES</button>
+        
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>
