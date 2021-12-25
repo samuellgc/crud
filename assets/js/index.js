@@ -21,9 +21,12 @@ document.getElementById('btn-add').addEventListener('click', (e) => {
 
 btnSaveChanges.addEventListener('click', (e) => {
    e.preventDefault();
+   attCour();
    closeModal();
-   cleanForm();   
+   cleanForm();
+   
 })
+
 
 btnCancel.addEventListener('click', (e) => {
     e.preventDefault();
@@ -38,13 +41,13 @@ btnSave.addEventListener('click', (e) => {
     cleanForm();
 })
 
-function deleteCard(event) {
-    event.target.parentNode.parentNode.remove();
-}
+//function deleteCard(event) {
+//    event.target.parentNode.parentNode.remove();
+//}
 
 function editModal() {
     openModalEdit();
-    editCourse();
+    showCourse();
 }
 
 var dataCourses = [
@@ -55,12 +58,56 @@ var dataCourses = [
         'description': 'newDescriptionCourse'
     }
 ];
+const attCour = () => {
+    let newIdCourse = document.getElementById('add-course-id').value
+    let newNameCourse = document.getElementById('add-course-name').value
+    let newImageCourse = document.getElementById('add-course-img').value
+    let newDescriptionCourse = document.getElementById('add-course-descp').value
+
+    if(newIdCourse == ""){
+        window.alert('Digite um ID válido!')
+        return false;
+    }    
+
+    for(let i = 0; i < dataCourses.length; i++) {        
+        if (dataCourses[i]['id'] == newIdCourse){                       
+            return window.alert('Esse ID de curso já existe!');
+        }        
+    }
+
+    dataCourses.push({
+        'id': newIdCourse,
+        'name': newNameCourse,
+        'image': newImageCourse,
+        'description': newDescriptionCourse
+    })
+
+    const attCourse = document.getElementById('first-element')
+    attCourse.innerHTML = `
+    <th scope="row" id="id-course">${newIdCourse}</th>
+    <td class="name-course" id="name-course">${newNameCourse}</td>
+    <td> <img id="img-course-new" class="img-course img-fluid table-img" src="${newImageCourse}" alt=""></td>
+    <td class="descrip-course" id="descrip-course">${newDescriptionCourse}</td>
+    <td class="btn-action"><button class="btn btn-secondary btn-edit" id="btn-edit" onclick="editModal()">EDIT</button> <button class="btn btn-danger btn-delete" onclick="deleteCard(event)">DELETE</button></td>
+    `
+}
 
 const createCourse = () => {
-    let newIdCourse = document.getElementById('add-course-id')
-    let newNameCourse = document.getElementById('add-course-name')
-    let newImageCourse = document.getElementById('add-course-img')
-    let newDescriptionCourse = document.getElementById('add-course-descp')
+    let newIdCourse = document.getElementById('add-course-id').value
+    let newNameCourse = document.getElementById('add-course-name').value
+    let newImageCourse = document.getElementById('add-course-img').value
+    let newDescriptionCourse = document.getElementById('add-course-descp').value
+
+    if(newIdCourse == ""){
+        window.alert('Digite um ID válido!')
+        return false;
+    }    
+
+    for(let i = 0; i < dataCourses.length; i++) {        
+        if (dataCourses[i]['id'] == newIdCourse){                       
+            return window.alert('Esse ID de curso já existe!');
+        }        
+    }
 
     dataCourses.push({
         'id': newIdCourse,
@@ -71,10 +118,10 @@ const createCourse = () => {
 
     const newCourse = document.createElement('tr')
     newCourse.innerHTML = `
-    <th scope="row" id="id-course">${newIdCourse.value}</th>
-    <td class="name-course" id="name-course">${newNameCourse.value}</td>
-    <td ><img id="img-course-new" class="img-course img-fluid table-img" src="${newImageCourse.value}" alt=""></td>
-    <td class="descrip-course" id="descrip-course">${newDescriptionCourse.value}</td>
+    <th scope="row" id="id-course">${newIdCourse}</th>
+    <td class="name-course" id="name-course">${newNameCourse}</td>
+    <td> <img id="img-course-new" class="img-course img-fluid table-img" src="${newImageCourse}" alt=""></td>
+    <td class="descrip-course" id="descrip-course">${newDescriptionCourse}</td>
     <td class="btn-action"><button class="btn btn-secondary btn-edit" id="btn-edit" onclick="editModal()">EDIT</button> <button class="btn btn-danger btn-delete" onclick="deleteCard(event)">DELETE</button></td>
     `
     newCourse.id = 'first-element'
@@ -82,7 +129,7 @@ const createCourse = () => {
     document.getElementById('container-body').insertBefore(newCourse, firstChild);
 }  
 
-function editCourse() {
+function showCourse() {
     var courseId = document.getElementById('id-course') 
     var courseName = document.getElementById('name-course')
     var courseImg = document.getElementById('img-course-new')
@@ -92,4 +139,13 @@ function editCourse() {
     document.getElementById('add-course-name').value = `${courseName.innerHTML}`
     document.getElementById('add-course-img').value = `${courseImg.src}`
     document.getElementById('add-course-descp').value = `${courseDesc.innerHTML}`
+}
+
+function deleteCard(id) {    
+    document.getElementById('first-element').remove();
+    for(let i = 1; i < dataCourses.length; i++) {        
+        if (dataCourses[i]){
+            dataCourses.splice(i, 1);
+        }        
+    }
 }
